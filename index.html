@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#FBF6EE">
+  <title>柳贺仁 ♡ 柏岩 · 婚礼请柬</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FBF6EE;
+      --bg-2: #F5ECDD;
+      --ink: #2C2C2A;
+      --muted: #6B6862;
+      --soft: #B4B2A9;
+      --red: #C8242A;
+      --red-deep: #8C1212;
+      --gold: #B89868;
+      --pink: #E8B4B8;
+      --rose: #F0DAD5;
+      --line: #E5DDD0;
+    }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    input { font-family: inherit; }
+
+    /* 顶部栏 */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      max-width: 480px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      z-index: 100;
+      color: #fff;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+    }
+    .topbar > * { pointer-events: auto; }
+    .topbar .back {
+      display: flex; align-items: center; gap: 6px;
+      color: #fff; font-size: 14px; font-weight: 500;
+      padding: 4px 0;
+    }
+    .topbar .back svg { width: 18px; height: 18px; }
+    .topbar .music {
+      display: flex; align-items: center; gap: 5px;
+      background: #4CAF50; color: #fff;
+      border-radius: 999px; padding: 5px 11px 5px 9px;
+      font-size: 11px; letter-spacing: 1px; font-weight: 600;
+      transition: background 0.3s;
+    }
+    .topbar .music.off { background: rgba(0,0,0,0.45); }
+    .topbar .music:disabled { opacity: 0.4; cursor: not-allowed; }
+    .topbar .music svg { width: 13px; height: 13px; }
+
+    /* 封面 */
+    .cover { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; background: linear-gradient(135deg, #E8C8C5, #C8A5A0); }
+    .cover img.cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: kenburns 18s ease-in-out infinite; }
+    .cover .placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px;
+      color: rgba(255,255,255,0.85);
+    }
+    .cover .placeholder .frame {
+      width: 72px; height: 72px; border: 1.5px solid rgba(255,255,255,0.6); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cover .placeholder .label { font-size: 12px; letter-spacing: 3px; }
+    .cover .vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.25) 100%);
+    }
+    @keyframes kenburns { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+    /* 双囍字 */
+    .double-happiness {
+      text-align: center;
+      padding: 70px 0 30px;
+      font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+      color: var(--red);
+      font-size: 110px;
+      letter-spacing: -10px;
+    }
+    .double-happiness .xi { display: inline-block; animation: xi-bob 3.2s ease-in-out infinite; }
+    .double-happiness .xi:nth-child(2) { animation-delay: 0.4s; }
+    @keyframes xi-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* 卡通插画 */
+    .cartoon { display: flex; justify-content: center; align-items: center; padding: 20px 0 30px; }
+    .cartoon svg { width: 240px; height: 200px; }
+
+    /* 通用分区 */
+    .poem { text-align: center; padding: 30px 36px 40px; }
+    .poem h2 {
+      font-family: 'Ma Shan Zheng', serif;
+      font-size: 26px; font-weight: 400;
+      color: var(--ink); letter-spacing: 4px; margin-bottom: 18px;
+    }
+    .poem p { color: var(--muted); font-size: 13px; line-height: 2.1; margin: 14px 0; letter-spacing: 0.5px; }
+    .poem .lead { color: var(--ink); font-size: 14px; }
+    .poem .divider {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      color: var(--pink); font-size: 14px; margin: 20px 0;
+    }
+    .poem .divider::before, .poem .divider::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--pink); }
+    .poem .venue { color: var(--ink); font-weight: 500; }
+
+    /* 导航卡片 */
+    .nav-card {
+      margin: 10px 22px 44px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 6px 20px rgba(40, 30, 20, 0.08);
+    }
+    .nav-card .nav-icon {
+      flex: 0 0 44px; width: 44px; height: 44px;
+      background: #FCEBEB; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+    }
+    .nav-card .nav-icon svg { width: 22px; height: 22px; }
+    .nav-card .nav-info { flex: 1; min-width: 0; }
+    .nav-card .nav-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+    .nav-card .nav-addr { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+    .nav-card .nav-btn {
+      flex: 0 0 auto;
+      background: var(--red); color: #fff;
+      padding: 9px 18px; border-radius: 999px;
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 2px;
+      transition: background 0.2s;
+    }
+    .nav-card .nav-btn:hover { background: var(--red-deep); }
+
+    /* 地图选择弹窗 */
+    .map-options { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .map-opt {
+      display: block; width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--line); border-radius: 8px;
+      color: var(--ink); font-size: 15px; text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .map-opt:hover { border-color: var(--red); color: var(--red); }
+    .map-cancel {
+      margin-top: 16px; width: 100%;
+      padding: 11px 16px; border-radius: 8px;
+      color: var(--muted); font-size: 14px;
+      background: #F5F3EF;
+    }
+
+    /* 人物双卡 */
+    .people {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      padding: 0 22px; margin: 30px 0 50px;
+    }
+    .people .card { background: #fff; padding: 8px 8px 18px; box-shadow: 0 6px 20px rgba(40, 30, 20, 0.08); }
+    .people .photo {
+      position: relative; aspect-ratio: 3/4; overflow: hidden;
+      background: linear-gradient(135deg, #F0DAD5, #C49A95);
+      margin-bottom: 10px;
+    }
+    .people .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .people .photo .ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 2px;
+    }
+    .people .label { text-align: center; font-size: 13px; color: var(--muted); letter-spacing: 2px; }
+
+    /* 故事三段 */
+    .story { text-align: center; padding: 30px 32px 40px; }
+    .story .line { margin: 22px 0; font-size: 14px; color: var(--ink); }
+    .story .line .dot { color: var(--red); margin-right: 4px; font-size: 16px; }
+    .story .line .sub { color: var(--muted); font-size: 12px; margin-top: 4px; letter-spacing: 1px; }
+
+    /* 斜置大图 */
+    .tilt { text-align: center; padding: 30px 0 40px; }
+    .tilt .photo {
+      display: inline-block; width: 72%; aspect-ratio: 3/4; position: relative;
+      background: linear-gradient(135deg, #F0DAD5, #B88A85);
+      transform: rotate(-4deg);
+      box-shadow: 0 16px 40px rgba(40, 20, 20, 0.18);
+      overflow: hidden;
+    }
+    .tilt .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .tilt .photo .ph {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 2px;
+    }
+
+    /* 三并排 */
+    .triple {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;
+      padding: 0 14px; margin: 30px 0 40px;
+    }
+    .triple .photo {
+      position: relative; aspect-ratio: 3/4; overflow: hidden;
+      background: linear-gradient(135deg, #F0DAD5, #C49A95);
+    }
+    .triple .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .triple .photo .ph {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 10px; letter-spacing: 1px;
+    }
+
+    /* 中国结 + 祝福 */
+    .knot-section { text-align: center; padding: 30px 32px 40px; }
+    .knot-section .knot { width: 80px; height: 96px; margin: 0 auto 24px; }
+    .knot-section p {
+      font-family: 'Ma Shan Zheng', serif;
+      color: var(--red); font-size: 22px; line-height: 2; letter-spacing: 2px;
+    }
+
+    /* 倒计时 */
+    .countdown { text-align: center; padding: 50px 20px 60px; background: var(--bg-2); }
+    .countdown .big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 88px; font-weight: 500;
+      color: var(--red); letter-spacing: 4px; line-height: 1;
+    }
+    .countdown .big em {
+      font-style: italic; font-size: 56px; color: var(--red-deep);
+      display: block; margin-top: 8px; letter-spacing: 0;
+    }
+    .countdown .timer {
+      margin-top: 22px; font-size: 12px; color: var(--muted);
+      letter-spacing: 3px; line-height: 1.9;
+    }
+    .countdown .timer .num { color: var(--red); font-weight: 600; font-size: 14px; }
+
+    /* 喜帖 */
+    .invite { text-align: center; padding: 50px 0 30px; }
+    .invite h2 {
+      font-family: 'Ma Shan Zheng', serif;
+      color: var(--red); font-size: 56px; font-weight: 400;
+      letter-spacing: 20px; padding-left: 20px; line-height: 1;
+    }
+    .invite .sub { margin-top: 12px; color: var(--muted); font-size: 12px; letter-spacing: 4px; font-family: 'Cormorant Garamond', serif; }
+
+    /* 日历 */
+    .calendar { padding: 20px 32px 50px; text-align: center; }
+    .calendar h3 {
+      font-weight: 500; font-size: 15px; margin-bottom: 18px; color: var(--ink);
+      letter-spacing: 2px;
+    }
+    .calendar table { width: 100%; border-collapse: collapse; margin: 0 auto; }
+    .calendar th, .calendar td { padding: 8px 0; text-align: center; font-size: 13px; }
+    .calendar th { color: var(--muted); font-weight: 400; }
+    .calendar th:first-child, .calendar th:last-child { color: var(--red); }
+    .calendar td.special { color: var(--red); font-weight: 700; position: relative; }
+    .calendar td.special .heart { display: block; font-size: 9px; color: var(--red); margin-top: -2px; }
+    .calendar .legend { margin-top: 16px; color: var(--muted); font-size: 12px; letter-spacing: 1px; }
+
+    /* 双人照 */
+    .big-photo { padding: 10px 22px 30px; }
+    .big-photo .photo {
+      position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden;
+      background: linear-gradient(135deg, #F0DAD5, #C49A95);
+    }
+    .big-photo .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .big-photo .photo .ph {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 2px;
+    }
+
+    /* RSVP */
+    .rsvp { text-align: center; padding: 50px 32px 30px; }
+    .rsvp h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 500; color: var(--ink);
+      letter-spacing: 8px; margin-bottom: 28px;
+    }
+    .rsvp input {
+      width: 100%; padding: 13px 18px; margin: 8px 0;
+      border: 1px solid var(--line); background: #fff;
+      font-size: 14px; border-radius: 4px; outline: none;
+      transition: border-color 0.2s;
+    }
+    .rsvp input:focus { border-color: var(--red); }
+    .rsvp input::placeholder { color: #B4B2A9; letter-spacing: 1px; }
+    .rsvp button {
+      margin-top: 24px;
+      background: var(--red); color: #fff;
+      padding: 14px 44px; font-size: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 6px; font-weight: 600;
+      border-radius: 4px; transition: background 0.2s;
+    }
+    .rsvp button:hover { background: var(--red-deep); }
+
+    /* 底部 */
+    footer { text-align: center; padding: 50px 0 100px; }
+    footer .i-do { font-family: 'Ma Shan Zheng', serif; font-size: 40px; color: var(--red); margin-bottom: 10px; }
+    footer .tag { color: var(--muted); font-size: 12px; letter-spacing: 3px; }
+    footer .heart-line { color: var(--red); font-size: 18px; margin: 8px 0 16px; letter-spacing: 6px; }
+
+    /* 弹窗 */
+    .modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      display: none; align-items: center; justify-content: center;
+      z-index: 200; padding: 24px;
+    }
+    .modal.show { display: flex; animation: fade-in 0.3s ease; }
+    .modal .card {
+      background: #fff; padding: 36px 32px; border-radius: 8px;
+      max-width: 320px; width: 100%; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal h3 { font-family: 'Ma Shan Zheng', serif; color: var(--red); font-size: 22px; margin-bottom: 12px; font-weight: 400; }
+    .modal p { color: var(--ink); font-size: 14px; line-height: 1.8; }
+    .modal .small { margin-top: 16px; font-size: 12px; color: var(--muted); }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+    /* 滚动淡入 */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-up.in { opacity: 1; transform: none; }
+
+    /* 音乐提示 */
+    .music-tip {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.75); color: #fff;
+      padding: 8px 16px; border-radius: 999px;
+      font-size: 12px; z-index: 99;
+      max-width: 480px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <button class="back" aria-label="返回">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      <span>婚礼请柬</span>
+    </button>
+    <button class="music off" id="musicBtn" aria-label="背景音乐">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 17V5l11-2v12.5"/><circle cx="6" cy="17" r="3"/><circle cx="17" cy="15" r="3"/></svg>
+      <span>OFF</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- 封面 -->
+    <section class="cover fade-up">
+      <img class="cover-img" src="photos/cover.jpg" alt="柳贺仁 ♡ 柏岩" onerror="this.style.display='none'">
+      <div class="placeholder">
+        <div class="frame">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>
+        </div>
+        <span class="label">待上传 · 封面双人照</span>
+      </div>
+      <div class="vignette"></div>
+    </section>
+
+    <!-- 双囍 -->
+    <section class="double-happiness fade-up"><span class="xi">囍</span><span class="xi">囍</span></section>
+
+    <!-- 卡通 -->
+    <section class="cartoon fade-up">
+      <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#2C2C2A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="78" cy="56" r="15" fill="#FBE4C8"/>
+          <path d="M64 52 Q78 36 92 52"/>
+          <circle cx="73" cy="56" r="1.4" fill="#2C2C2A"/>
+          <circle cx="83" cy="56" r="1.4" fill="#2C2C2A"/>
+          <path d="M75 64 Q78 67 81 64"/>
+          <line x1="78" y1="71" x2="78" y2="82"/>
+          <path d="M58 96 L60 82 L96 82 L98 96 L94 158 L62 158 Z" fill="#1A1A1A"/>
+          <path d="M70 86 L78 92 L86 86 M78 92 L78 104" fill="#C8242A"/>
+          <path d="M74 82 L78 102 L82 82" fill="#fff"/>
+          <path d="M58 96 Q42 130 52 158"/>
+          <path d="M98 96 Q114 130 104 158"/>
+          <line x1="72" y1="158" x2="68" y2="190"/>
+          <line x1="84" y1="158" x2="88" y2="190"/>
+          <line x1="60" y1="190" x2="76" y2="190" stroke-width="2.5"/>
+          <line x1="80" y1="190" x2="96" y2="190" stroke-width="2.5"/>
+        </g>
+        <g stroke="#2C2C2A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="170" cy="56" r="15" fill="#FBE4C8"/>
+          <path d="M155 54 Q150 80 156 100 L184 100 Q190 80 185 54 Q180 38 170 38 Q160 38 155 54 Z" fill="#3A2A1A"/>
+          <circle cx="165" cy="56" r="1.4" fill="#2C2C2A"/>
+          <circle cx="175" cy="56" r="1.4" fill="#2C2C2A"/>
+          <path d="M167 64 Q170 67 173 64"/>
+          <path d="M170 71 L150 190 L190 190 Z" fill="#fff"/>
+          <path d="M156 44 Q138 70 148 100" fill="none"/>
+          <line x1="156" y1="118" x2="184" y2="118" opacity="0.5"/>
+          <circle cx="160" cy="135" r="4" fill="#E8B4B8"/>
+          <circle cx="165" cy="140" r="4" fill="#C8242A"/>
+          <circle cx="158" cy="145" r="4" fill="#fff"/>
+        </g>
+        <path d="M120 92 Q110 82 115 73 Q120 69 120 76 Q120 69 125 73 Q130 82 120 92 Z" fill="#C8242A" stroke="none"/>
+      </svg>
+    </section>
+
+    <!-- 诗词 -->
+    <section class="poem fade-up">
+      <h2>婚礼进行曲</h2>
+      <p class="lead">行至朝暮里，坠入暮云间，<br>与君共度余生，此生不换。</p>
+      <div class="divider">❀</div>
+      <p>凡益之道，与时偕行。<br>谨定于公元二零二六年<br>九月二十六日（农历八月十六）<br>于 <span class="venue">河南省南阳市锦绣民族饭店</span><br>举行婚礼，敬备喜筵，恭候光临。</p>
+    </section>
+
+    <!-- 导航 -->
+    <section class="nav-card fade-up">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      </div>
+      <div class="nav-info">
+        <div class="nav-name">锦绣民族饭店</div>
+        <div class="nav-addr">宛城区独山大道与孔明路交叉口东北角</div>
+      </div>
+      <button class="nav-btn" id="navBtn">导航</button>
+    </section>
+
+    <!-- 人物双卡 -->
+    <section class="people fade-up">
+      <div class="card">
+        <div class="photo">
+          <img src="photos/bride.jpg" alt="新娘 柏岩" onerror="this.style.display='none'">
+          <div class="ph">新娘照</div>
+        </div>
+        <div class="label">新娘 · 柏岩</div>
+      </div>
+      <div class="card">
+        <div class="photo">
+          <img src="photos/groom.jpg" alt="新郎 柳贺仁" onerror="this.style.display='none'">
+          <div class="ph">新郎照</div>
+        </div>
+        <div class="label">新郎 · 柳贺仁</div>
+      </div>
+    </section>
+
+    <!-- 故事三段 -->
+    <section class="story fade-up">
+      <div class="line"><span class="dot">●</span>新郎<br><span class="sub">柳贺仁 · 9/26 集合</span></div>
+      <div class="line"><span class="dot">●</span>婚礼<br><span class="sub">邀请最好的朋友来</span></div>
+      <div class="line"><span class="dot">●</span>佳期<br><span class="sub">两姓联姻 一堂缔约</span></div>
+    </section>
+
+    <!-- 斜置大图 -->
+    <section class="tilt fade-up">
+      <div class="photo">
+        <img src="photos/tilt.jpg" alt="合影" onerror="this.style.display='none'">
+        <div class="ph">待上传 · 合影</div>
+      </div>
+    </section>
+
+    <!-- 三并排 -->
+    <section class="triple fade-up">
+      <div class="photo"><img src="photos/p1.jpg" alt="" onerror="this.style.display='none'"><div class="ph">PHOTO</div></div>
+      <div class="photo"><img src="photos/p2.jpg" alt="" onerror="this.style.display='none'"><div class="ph">PHOTO</div></div>
+      <div class="photo"><img src="photos/p3.jpg" alt="" onerror="this.style.display='none'"><div class="ph">PHOTO</div></div>
+    </section>
+
+    <!-- 中国结 + 祝福 -->
+    <section class="knot-section fade-up">
+      <svg class="knot" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#C8242A" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M60 20 L100 60 L60 100 L20 60 Z"/>
+          <path d="M40 60 L80 60 M60 40 L60 80"/>
+          <rect x="48" y="48" width="24" height="24"/>
+          <text x="60" y="68" font-size="20" font-weight="700" text-anchor="middle" fill="#C8242A" stroke="none" font-family="serif">囍</text>
+          <line x1="60" y1="100" x2="60" y2="116"/>
+          <path d="M52 116 L60 134 L68 116 Z" fill="#C8242A"/>
+          <line x1="55" y1="120" x2="55" y2="130" stroke-width="1.2"/>
+          <line x1="60" y1="120" x2="60" y2="132" stroke-width="1.2"/>
+          <line x1="65" y1="120" x2="65" y2="130" stroke-width="1.2"/>
+        </g>
+      </svg>
+      <p>携子之手，与子偕老<br>从此烟火与共，四季与你</p>
+    </section>
+
+    <!-- 倒计时 -->
+    <section class="countdown fade-up">
+      <div class="big">9 / 26<em>The Wedding Day</em></div>
+      <div class="timer" id="timer">距婚礼还有 -- 天 -- 时 -- 分 -- 秒</div>
+    </section>
+
+    <!-- 喜帖 -->
+    <section class="invite fade-up">
+      <h2>喜 帖</h2>
+      <div class="sub">I N V I T A T I O N</div>
+    </section>
+
+    <!-- 日历 -->
+    <section class="calendar fade-up">
+      <h3>2026 年 9 月</h3>
+      <table>
+        <thead>
+          <tr><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th></tr>
+        </thead>
+        <tbody id="calBody"></tbody>
+      </table>
+      <div class="legend">9 月 26 日 · 农历八月十六 · 星期六</div>
+    </section>
+
+    <!-- 双人照 -->
+    <section class="big-photo fade-up">
+      <div class="photo">
+        <img src="photos/big.jpg" alt="合影" onerror="this.style.display='none'">
+        <div class="ph">待上传 · 双人照</div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp fade-up">
+      <h2>: WELCOME :</h2>
+      <input id="rsvpName" type="text" placeholder="姓名 / Name">
+      <input id="rsvpCount" type="number" min="1" max="10" placeholder="到场人数 / Guests">
+      <input id="rsvpWish" type="text" placeholder="想说的话 / Wishes">
+      <button id="goBtn">G O !</button>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="fade-up">
+      <div class="i-do">我愿意</div>
+      <div class="heart-line">♥ ♥ ♥</div>
+      <div class="tag">来领礼物 · 准备好享</div>
+    </footer>
+  </main>
+
+  <!-- 弹窗 -->
+  <div class="modal" id="modal">
+    <div class="card">
+      <h3>已收到你的祝福</h3>
+      <p>感谢 <span id="modalName" style="color:var(--red);font-weight:500"></span> 见证我们的重要时刻 ♥</p>
+      <p style="margin-top:14px">期待与你相见，<br>9 月 26 日见。</p>
+      <div class="small">柳贺仁 ♡ 柏岩 敬上</div>
+    </div>
+  </div>
+
+  <!-- 导航弹窗 -->
+  <div class="modal" id="mapModal">
+    <div class="card">
+      <h3>选择导航地图</h3>
+      <p style="color:var(--muted);font-size:12px;margin-bottom:4px">锦绣民族饭店</p>
+      <div class="map-options">
+        <a class="map-opt" href="https://uri.amap.com/navigation?to=112.567581,32.992445,%E9%94%A6%E7%BB%A3%E6%B0%91%E6%97%8F%E9%A5%AD%E5%BA%97&mode=car&callnative=1">高德地图</a>
+        <a class="map-opt" href="https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=%E9%94%A6%E7%BB%A3%E6%B0%91%E6%97%8F%E9%A5%AD%E5%BA%97&tocoord=32.992445,112.567581&referer=wedding">腾讯地图</a>
+        <a class="map-opt" href="https://api.map.baidu.com/direction?destination=latlng:32.998754,112.573982%7Cname:%E9%94%A6%E7%BB%A3%E6%B0%91%E6%97%8F%E9%A5%AD%E5%BA%97&mode=driving&output=html&src=wedding">百度地图</a>
+      </div>
+      <button class="map-cancel" id="mapCancel">取消</button>
+    </div>
+  </div>
+
+  <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+  <script>
+    // 倒计时（终点 2026-09-26 12:00 GMT+8）
+    const WEDDING = new Date('2026-09-26T12:00:00+08:00').getTime();
+    const timer = document.getElementById('timer');
+    function tick() {
+      const diff = WEDDING - Date.now();
+      if (diff <= 0) { timer.innerHTML = '<span class="num">今天，我们结婚啦 ♥</span>'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      timer.innerHTML = '距婚礼还有 <span class="num">' + d + '</span> 天 <span class="num">' + h + '</span> 时 <span class="num">' + m + '</span> 分 <span class="num">' + s + '</span> 秒';
+    }
+    tick(); setInterval(tick, 1000);
+
+    // 音乐
+    const audio = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    let playing = false;
+    audio.addEventListener('error', () => {
+      musicBtn.disabled = true;
+      musicBtn.title = '请将背景音乐命名为 music.mp3 放在同目录';
+    });
+    musicBtn.addEventListener('click', () => {
+      if (musicBtn.disabled) return;
+      if (playing) {
+        audio.pause();
+        musicBtn.classList.add('off');
+        musicBtn.querySelector('span').textContent = 'OFF';
+      } else {
+        audio.play().catch(() => {});
+        musicBtn.classList.remove('off');
+        musicBtn.querySelector('span').textContent = 'ON';
+      }
+      playing = !playing;
+    });
+    // 微信/移动端首次触摸自动播放
+    document.addEventListener('touchstart', () => {
+      if (!musicBtn.disabled && !playing) {
+        audio.play().then(() => {
+          playing = true; musicBtn.classList.remove('off'); musicBtn.querySelector('span').textContent = 'ON';
+        }).catch(() => {});
+      }
+    }, { once: true });
+    // 桌面端首次点击
+    document.addEventListener('click', () => {
+      if (!musicBtn.disabled && !playing) {
+        audio.play().then(() => {
+          playing = true; musicBtn.classList.remove('off'); musicBtn.querySelector('span').textContent = 'ON';
+        }).catch(() => {});
+      }
+    }, { once: true });
+
+    // 日历（2026年9月1日 = 周二）
+    (function () {
+      const tb = document.getElementById('calBody');
+      const firstIdx = 1; // 周二索引
+      const days = 30;
+      let html = '', day = 1, stopped = false;
+      for (let w = 0; w < 6 && !stopped; w++) {
+        html += '<tr>';
+        for (let d = 0; d < 7; d++) {
+          if ((w === 0 && d < firstIdx) || day > days) {
+            html += '<td></td>';
+          } else {
+            const cls = day === 26 ? ' class="special"' : '';
+            const heart = day === 26 ? '<span class="heart">♥</span>' : '';
+            html += '<td' + cls + '>' + day + heart + '</td>';
+            day++;
+          }
+        }
+        html += '</tr>';
+        if (day > days) stopped = true;
+      }
+      tb.innerHTML = html;
+    })();
+
+    // RSVP
+    const modal = document.getElementById('modal');
+    const modalName = document.getElementById('modalName');
+    document.getElementById('goBtn').addEventListener('click', () => {
+      const name = document.getElementById('rsvpName').value.trim();
+      const nameInput = document.getElementById('rsvpName');
+      if (!name) {
+        nameInput.focus();
+        nameInput.style.borderColor = 'var(--red)';
+        return;
+      }
+      modalName.textContent = name;
+      modal.classList.add('show');
+    });
+    modal.addEventListener('click', () => modal.classList.remove('show'));
+
+    // 导航弹窗
+    const mapModal = document.getElementById('mapModal');
+    document.getElementById('navBtn').addEventListener('click', () => mapModal.classList.add('show'));
+    document.getElementById('mapCancel').addEventListener('click', () => mapModal.classList.remove('show'));
+    mapModal.addEventListener('click', (e) => { if (e.target === mapModal) mapModal.classList.remove('show'); });
+
+    // 滚动淡入
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { threshold: 0.12 });
+      document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('in'));
+    }
+  </script>
+</body>
+</html>
