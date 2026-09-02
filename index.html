@@ -226,15 +226,16 @@
     .cal-mini th{padding:6px 0;font-weight:600;font-size:13px;font-style:italic;color:var(--gold-deep);text-shadow:0 1px 3px rgba(0,0,0,.15)}
     .cal-mini td{padding:6px 0;font-size:14px;font-weight:600;color:var(--gold-deep);text-shadow:0 1px 3px rgba(0,0,0,.15)}
     .cal-mini td.special{
-      color:#fff;font-weight:700;position:relative;
+      position:relative;
+      display:flex;align-items:center;justify-content:center;
     }
     .cal-mini td.special .heart-bg{
-      position:absolute;top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      font-size:40px;color:#E63946;z-index:0;
+      position:absolute;inset:0;
+      display:flex;align-items:center;justify-content:center;
+      font-size:40px;color:#E63946;pointer-events:none;
     }
     .cal-mini td.special .day{
-      position:relative;z-index:1;
+      position:relative;z-index:1;color:#fff;font-weight:700;
     }
 
     /* 爱情宣言 */
@@ -361,7 +362,7 @@
       border-radius:8px;overflow:hidden;
       box-shadow:0 6px 20px rgba(0,0,0,.08);
     }
-    .map-real iframe{width:100%;height:100%;border:0;display:block}
+    .map-real iframe,.map-real img{width:100%;height:100%;border:0;display:block}
     .map-tip{
       position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
       background:var(--gold);color:#fff;
@@ -599,7 +600,7 @@
     <h1 class="handwriting">我们不见不散</h1>
     <!-- 实景地图（点击导航） -->
     <a class="map-real" href="https://uri.amap.com/navigation?to=112.567581,32.992445,%E9%94%A6%E7%BB%A3%E6%B0%91%E6%97%8F%E9%A5%AD%E5%BA%97&mode=car&callnative=1" target="_blank" rel="noopener" aria-label="点击地图导航">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=112.5550%2C32.9850%2C112.5800%2C33.0000&layer=mapnik&marker=32.992445%2C112.567581" frameborder="0" loading="lazy"></iframe>
+      <img src="photos/map.jpg" alt="锦绣民族饭店 地图位置">
       <div class="map-tip">点击地图导航</div>
     </a>
     <p class="date-info">2026 年 9 月 26 日</p>
