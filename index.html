@@ -478,7 +478,7 @@
 <body>
 
   <!-- 浮动音乐按钮 -->
-  <button class="music-float off" id="musicBtn" aria-label="背景音乐">
+  <button class="music-float playing" id="musicBtn" aria-label="背景音乐">
     <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18V6l10-2v11"/>
       <circle cx="6.5" cy="18" r="2.5"/>
@@ -652,7 +652,7 @@
     <p class="tips-line">这场星光与爱意交织的浪漫里</p>
   </footer>
 
-  <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+  <audio id="bgm" src="music.mp3" loop preload="auto" autoplay></audio>
 
   <script>
     // ===== 禁止长按/右键菜单（防止保存图片，文字仍可选中复制）=====
@@ -669,34 +669,48 @@
     // ===== 音乐 =====
     const audio = document.getElementById('bgm');
     const musicBtn = document.getElementById('musicBtn');
-    let playing = false;
+    let playing = true;      // 默认：音乐是开着的
+    let userOff = false;     // 用户手动关过，就不再自动播
     audio.addEventListener('error', () => {
       musicBtn.disabled = true;
       musicBtn.title = '请将背景音乐命名为 music.mp3 放在同目录';
     });
-    musicBtn.addEventListener('click', () => {
+    function markOn(){ playing = true; musicBtn.classList.remove('off'); musicBtn.classList.add('playing'); }
+    function markOff(){ playing = false; musicBtn.classList.add('off'); musicBtn.classList.remove('playing'); }
+    // 默认即显示"播放中"样式（一进来就是开着的，首次手势/微信就绪即出声）
+    if (!musicBtn.disabled) markOn();
+
+    musicBtn.addEventListener('click', e => {
+      e.stopPropagation();
       if (musicBtn.disabled) return;
       if (playing) {
-        audio.pause();
-        musicBtn.classList.add('off');
-        musicBtn.classList.remove('playing');
+        userOff = true;                 // 用户主动关闭，尊重选择
+        audio.pause(); markOff();
       } else {
+        userOff = false;
         if (killed) { audio.src = SRC; audio.load(); killed = false; }
         audio.play().catch(()=>{});
-        musicBtn.classList.remove('off');
-        musicBtn.classList.add('playing');
+        markOn();
       }
-      playing = !playing;
     });
-    function tryAutoPlay() {
-      if (!musicBtn.disabled && !playing) {
-        audio.play().then(() => {
-          playing = true; musicBtn.classList.remove('off'); musicBtn.classList.add('playing');
-        }).catch(()=>{});
-      }
+
+    function tryAutoPlay(){
+      if (musicBtn.disabled || userOff) return;
+      if (!audio.paused) { markOn(); return; }
+      audio.play().then(markOn).catch(()=>{});
     }
-    document.addEventListener('touchstart', tryAutoPlay, { once: true });
-    document.addEventListener('click', tryAutoPlay, { once: true });
+
+    // 1) 页面一打开就尝试自动播放
+    tryAutoPlay();
+    document.addEventListener('DOMContentLoaded', tryAutoPlay);
+    window.addEventListener('load', tryAutoPlay);
+    // 2) 微信内置浏览器：JSBridge 就绪后可直接自动播放
+    if (window.WeixinJSBridge) tryAutoPlay();
+    document.addEventListener('WeixinJSBridgeReady', tryAutoPlay, false);
+    // 3) iOS Safari 需要用户手势：任意触摸/点击都补一次（直到播起来为止）
+    ['touchstart','touchend','click','pointerdown','keydown'].forEach(ev =>
+      document.addEventListener(ev, tryAutoPlay, { passive: true })
+    );
 
     // ===== 切到后台 / 上滑回桌面 / 锁屏 / 切微信 时强制停乐，回来再续 =====
     // playing 表示"用户是否开着音乐"；切后台只停音频，不改变开关状态
@@ -704,6 +718,7 @@
     let wasPlaying = false;   // 是否因切后台而被停
     let killed = false;       // 是否已用"断源"方式强杀
     let lastTime = 0;
+    let killTimer = null;
 
     function stopNow(){
       if (musicBtn.disabled) return;
@@ -714,8 +729,9 @@
       setTimeout(() => audio.pause(), 0);  // iOS 偶尔会自恢复，补两刀
       setTimeout(() => audio.pause(), 150);
       musicBtn.classList.remove('playing');
-      // 300ms 后仍未停下（iOS 全面屏上滑场景）→ 直接断源，彻底停
-      setTimeout(() => {
+      // 320ms 后仍未停下（iOS 全面屏上滑场景）→ 直接断源，彻底停
+      clearTimeout(killTimer);
+      killTimer = setTimeout(() => {
         if (!audio.paused && !killed) {
           audio.pause();
           audio.removeAttribute('src');
@@ -727,6 +743,7 @@
 
     function resumeNow(){
       if (musicBtn.disabled) return;
+      clearTimeout(killTimer);             // 回到前台，取消待执行的强杀
       if (killed) {                        // 之前被断源，重新接上并续播
         audio.src = SRC;
         audio.load();
