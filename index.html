@@ -776,6 +776,8 @@
         }
         gate.classList.add('hide');            // 淡出
         setTimeout(() => { if (gate.parentNode) gate.remove(); }, 950);
+        // 遮罩淡出后启动自动下滑
+        setTimeout(() => window.dispatchEvent(new Event('startAutoScroll')), 380);
       });
     }
 
@@ -884,12 +886,12 @@
       document.querySelectorAll('.fade-up, .fly-in').forEach(el => el.classList.add('in'));
     }
 
-    // ===== 自动缓慢下滑（用户触摸/滚动立即停止）=====
+    // ===== 自动缓慢下滑（点「开启邀请」后开始；用户触摸/滚动立即停止）=====
     (function(){
-      let autoScroll = true;
+      let autoScroll = false;
       let rafId = null;
       let lastT = 0;
-      const SPEED = 0.032; // px/ms ≈ 32px/秒（更缓慢）
+      const SPEED = 0.055; // px/ms ≈ 55px/秒（加快）
 
       function loop(ts){
         if (!autoScroll) return;
@@ -903,11 +905,17 @@
       }
       function stop(){
         autoScroll = false;
+        lastT = 0;
         if (rafId) cancelAnimationFrame(rafId);
       }
-      setTimeout(() => {
-        if (autoScroll) rafId = requestAnimationFrame(loop);
-      }, 1200);
+      function start(){
+        if (autoScroll) return;
+        autoScroll = true;
+        lastT = 0;
+        rafId = requestAnimationFrame(loop);
+      }
+      // 由「开启邀请」按钮触发启动
+      window.addEventListener('startAutoScroll', start);
       ['touchstart','touchmove','mousedown','wheel','keydown'].forEach(ev => {
         window.addEventListener(ev, stop, { passive: true });
       });
