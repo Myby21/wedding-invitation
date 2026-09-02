@@ -763,14 +763,12 @@
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) stopNow(); else resumeNow();
     });
-    // iOS Safari / 微信 WebView 上滑回桌面最可靠的两个事件
+    // iOS Safari / 微信 WebView 上滑回桌面最可靠的两个事件（仅代表"真正切后台"，
+    // 绝不用 blur/focus，否则页面刚加载时会被误触发、把自动播放当场掐死）
     window.addEventListener('pagehide', stopNow);
     window.addEventListener('pageshow', resumeNow);
-    window.addEventListener('blur',  stopNow);
-    window.addEventListener('focus', resumeNow);
-    // 锁屏 / 切后台挂起
-    document.addEventListener('suspend', stopNow);
-    document.addEventListener('freeze',  stopNow);
+    // 页面被冻结挂起（切后台一段时间后）
+    document.addEventListener('freeze', stopNow);
 
     // ===== 倒计时（终点 2026-09-26 13:14 GMT+8） =====
     const WEDDING = new Date('2026-09-26T13:14:00+08:00').getTime();
