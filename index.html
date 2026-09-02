@@ -456,6 +456,22 @@
     .fly-in{opacity:0;transform:translateY(72px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.22,.61,.36,1)}
     .fly-in.in{opacity:1;transform:none}
 
+    /* 禁止照片长按保存：所有展示类照片（地图图片除外，需点击导航） */
+    .hero img,
+    .photo-frame img,
+    .calendar-section .photo-bg,
+    .gal-item img,
+    .single-img img{
+      -webkit-touch-callout:none !important;
+      -webkit-user-select:none !important;
+      -khtml-user-select:none !important;
+      -moz-user-select:none !important;
+      -ms-user-select:none !important;
+      user-select:none !important;
+      -webkit-user-drag:none !important;
+      pointer-events:none !important;
+    }
+
     /* 花瓣特效由 Canvas 粒子实现（见脚本），无需 CSS 定义 */
   </style>
 </head>
@@ -639,6 +655,11 @@
   <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
 
   <script>
+    // ===== 禁止长按/右键菜单（防止保存图片，文字仍可选中复制）=====
+    document.addEventListener('contextmenu', e => {
+      if (e.target && e.target.tagName === 'IMG') { e.preventDefault(); return false; }
+    });
+
     // ===== 立体彩带蝴蝶结替换所有 .bow =====
     (function(){
       const BOW = '<svg class="bow" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rib" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0D69C"/><stop offset="0.5" stop-color="#C9A876"/><stop offset="1" stop-color="#8A6A3A"/></linearGradient></defs><g stroke="#8A6A3A" stroke-width="0.6" stroke-linejoin="round"><path d="M120 60 C 88 28 28 32 20 55 C 24 80 90 82 120 60 Z" fill="url(#rib)"/><path d="M120 60 C 152 28 212 32 220 55 C 216 80 150 82 120 60 Z" fill="url(#rib)"/><path d="M106 72 C 86 96 60 122 30 132 Q 56 124 78 110 Q 96 94 104 76 Z" fill="url(#rib)"/><path d="M134 72 C 154 96 180 122 210 132 Q 184 124 162 110 Q 144 94 136 76 Z" fill="url(#rib)"/><ellipse cx="120" cy="62" rx="14" ry="11" fill="url(#rib)"/></g><g fill="#A8865A"><path d="M30 132 L 50 122 L 44 134 L 30 138 Z"/><path d="M210 132 L 190 122 L 196 134 L 210 138 Z"/></g><g fill="#6A4A1A" opacity="0.3"><path d="M120 60 C 95 50 65 55 55 62 C 75 70 100 70 120 60 Z"/><path d="M120 60 C 145 50 175 55 185 62 C 165 70 140 70 120 60 Z"/></g><g stroke="#F8E8C8" stroke-width="1.8" fill="none" opacity="0.7"><path d="M120 60 Q 95 42 78 50"/><path d="M120 60 Q 145 42 162 50"/></g><ellipse cx="116" cy="58" rx="6" ry="3" fill="#F5E0B8" opacity="0.7"/></svg>';
