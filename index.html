@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="theme-color" content="#FBF6EE">
   <title>柳贺仁 ♡ 柏岩 · 婚礼邀请</title>
+
+  <!-- 微信朋友圈/聊天分享卡片 -->
+  <meta property="og:title" content="柳贺仁 ♡ 柏岩 · 婚礼邀请">
+  <meta property="og:description" content="2026年9月26日 我们结婚了，诚邀您见证我们的幸福时刻">
+  <meta property="og:image" content="https://myby21.github.io/wedding-invitation/photos/cover.jpg">
+  <meta property="og:url" content="https://myby21.github.io/wedding-invitation/">
+  <meta property="og:type" content="website">
+  <meta name="description" content="2026年9月26日 我们结婚了，诚邀您见证我们的幸福时刻">
+
   <link rel="preconnect" href="https://fonts.loli.net">
   <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
   <link href="https://fonts.loli.net/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Liu+Jian+Mao+Cao&family=Long+Cang&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=ZCOOL+QingKe+HuangYou&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
@@ -229,10 +238,10 @@
       position:relative;
       display:flex;align-items:center;justify-content:center;
     }
-    .cal-mini td.special .heart-bg{
-      position:absolute;inset:0;
-      display:flex;align-items:center;justify-content:center;
-      font-size:40px;color:#E63946;pointer-events:none;
+    .cal-mini td.special .heart-svg{
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:30px;height:27px;pointer-events:none;
     }
     .cal-mini td.special .day{
       position:relative;z-index:1;color:#fff;font-weight:700;
@@ -689,7 +698,10 @@
           if ((w === 0 && d < firstIdx) || day > days) html += '<td></td>';
           else {
             const cls = day === 26 ? ' class="special"' : '';
-            const content = day === 26 ? '<span class="heart-bg">❤</span><span class="day">26</span>' : day;
+            const heart = '<svg class="heart-svg" viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg">'
+              + '<path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4'
+              + 'c0,9.4,16,20.6,16,20.6s16-11.2,16-20.6C32,3.8,28.2,0,23.6,0z" fill="#E63946"/></svg>';
+            const content = day === 26 ? heart + '<span class="day">26</span>' : day;
             html += '<td' + cls + '>' + content + '</td>';
             day++;
           }
