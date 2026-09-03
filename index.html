@@ -134,11 +134,11 @@
       letter-spacing:4px;margin:18px 0 20px;
     }
     .couple-name em{
-      /* Cormorant Garamond 来自谷歌字体镜像，国内常加载失败；
-         补上 Georgia/Times 等拉丁衬线兜底，保证 & 始终是清晰的标准 & 字形 */
-      font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
-      font-style:italic;font-weight:400;color:var(--gold);
-      font-size:26px;margin:0 10px;
+      /* 用 Georgia 正体替代 Cormorant Garamond 斜体：花写体 & 弯钩太大、
+         不像标准 &；Georgia 正体的 & 是经典衬线写法，一眼能认出 */
+      font-family:Georgia,'Times New Roman',serif;
+      font-style:normal;font-weight:400;color:var(--gold);
+      font-size:30px;margin:0 12px;
     }
     .poem-line{color:var(--muted);font-size:13px;line-height:2.2;letter-spacing:1px}
 
