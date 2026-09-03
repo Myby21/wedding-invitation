@@ -134,7 +134,9 @@
       letter-spacing:4px;margin:18px 0 20px;
     }
     .couple-name em{
-      font-family:'Cormorant Garamond',serif;
+      /* Cormorant Garamond 来自谷歌字体镜像，国内常加载失败；
+         补上 Georgia/Times 等拉丁衬线兜底，保证 & 始终是清晰的标准 & 字形 */
+      font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
       font-style:italic;font-weight:400;color:var(--gold);
       font-size:26px;margin:0 10px;
     }
@@ -519,7 +521,7 @@
         <ellipse cx="100" cy="55" rx="11" ry="9"/>
       </g>
     </svg>
-    <div class="couple-name">柳贺仁 <em>&</em> 柏岩</div>
+    <div class="couple-name">柳贺仁 <em>&amp;</em> 柏岩</div>
     <p class="poem-line">人的一生有三万多天</p>
     <p class="poem-line">很开心这一天 你为我们而来</p>
     <p class="poem-line">佳期已定 · 敬备喜筵</p>
