@@ -16,7 +16,7 @@
 
   <link rel="preconnect" href="https://fonts.loli.net">
   <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
-  <link href="https://fonts.loli.net/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Liu+Jian+Mao+Cao&family=Long+Cang&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=ZCOOL+QingKe+HuangYou&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Liu+Jian+Mao+Cao&family=Long+Cang&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Zhi Mang Xing';
@@ -115,19 +115,6 @@
       color:var(--gold-deep);margin-top:2px;
     }
     .bow{display:block;margin:30px auto;width:60px;height:36px}
-    .couple-photos{
-      display:flex;justify-content:center;gap:18px;
-      margin:24px 0 6px;
-    }
-    .single-photo{text-align:center}
-    .single-img{
-      width:135px;height:135px;border-radius:50%;
-      overflow:hidden;
-      border:2.5px solid var(--gold-light);
-      box-shadow:0 6px 18px rgba(201,168,118,.35);
-      margin:0 auto;
-    }
-    .single-img img{width:100%;height:100%;object-fit:cover}
     .couple-name{
       font-family:'Noto Serif SC',serif;
       font-size:22px;font-weight:500;color:var(--ink);
@@ -249,15 +236,6 @@
       position:relative;z-index:1;color:#fff;font-weight:700;
     }
 
-    /* 爱情宣言 */
-    .love-section{padding:50px 32px 40px;text-align:center;background:var(--bg)}
-    .love-section .photo-frame{margin-bottom:24px}
-    .love-section .subtitle{
-      font-family:'Cormorant Garamond',serif;
-      font-style:italic;font-weight:300;
-      font-size:12px;color:var(--muted);
-      letter-spacing:2px;margin:6px 0 24px;
-    }
     .handwriting{
       font-family:'Zhi Mang Xing','Ma Shan Zheng','Liu Jian Mao Cao','Long Cang','KaiTi','STKaiti','LiSu','楷体','隶书',cursive;
       font-weight:400;font-size:30px;
@@ -300,41 +278,13 @@
     .gal-item img{width:100%;height:100%;object-fit:cover;display:block}
     .gal-item.wide{grid-column:span 2;aspect-ratio:16/9}
 
-    /* 温馨tips */
-    .tips-section{padding:60px 32px 40px;text-align:center;background:var(--bg)}
-    .tips-photo{width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:36px;box-shadow:0 6px 20px rgba(0,0,0,.08);border-radius:2px}
+    /* 温馨tips / 星光文案 */
     .tips-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:18px;color:var(--gold-deep);letter-spacing:2px;margin-bottom:18px;text-align:center}
     .tips-line{font-size:13px;color:var(--muted);line-height:2.2;letter-spacing:1px;text-align:center}
 
     /* 不见不散 */
     .meet-section{padding:40px 32px 50px;text-align:center;background:var(--bg-deep)}
     .meet-section .bow{width:60px;height:36px}
-    .map-card{
-      position:relative;margin:0 auto 24px;
-      width:100%;max-width:340px;aspect-ratio:16/10;
-      background:linear-gradient(135deg,#E8DFD0,#C8B898);
-      border-radius:8px;overflow:hidden;
-      box-shadow:0 6px 20px rgba(0,0,0,.06);
-    }
-    .map-bg{
-      position:absolute;inset:0;
-      background:
-        linear-gradient(90deg,transparent 49%,rgba(255,255,255,.3) 50%,transparent 51%),
-        linear-gradient(0deg,transparent 49%,rgba(255,255,255,.3) 50%,transparent 51%),
-        linear-gradient(45deg,transparent 60%,rgba(201,168,118,.2) 60%,rgba(201,168,118,.2) 62%,transparent 62%);
-      opacity:.5;
-    }
-    .map-pin{
-      position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);
-      width:32px;height:42px;
-    }
-    .map-venue-name{
-      position:absolute;left:50%;top:50%;transform:translate(-50%,20px);
-      background:#fff;padding:6px 14px;border-radius:16px;
-      font-size:13px;color:var(--ink);letter-spacing:1px;
-      box-shadow:0 2px 12px rgba(0,0,0,.1);
-      white-space:nowrap;
-    }
     .date-info{
       font-family:'Noto Serif SC',serif;
       font-size:22px;font-weight:500;color:var(--ink);
@@ -382,73 +332,10 @@
       box-shadow:0 4px 12px rgba(0,0,0,.25);
       pointer-events:none;
     }
-    .nav-btn{
-      background:var(--gold);color:#fff;
-      padding:12px 36px;border-radius:30px;
-      font-size:14px;letter-spacing:4px;font-weight:500;
-      box-shadow:0 4px 12px rgba(201,168,118,.3);
-      transition:all .2s;
-    }
-    .nav-btn:hover{background:var(--gold-deep)}
-
-    /* 英文长文 */
-    .love-letter{padding:60px 36px 30px;text-align:center;background:var(--bg)}
-    .love-letter .section-title{
-      font-style:italic;font-weight:400;
-      font-size:28px;line-height:1.4;
-    }
-    .verse-long{
-      font-family:'Cormorant Garamond',serif;
-      font-style:italic;font-weight:300;
-      font-size:11px;color:var(--muted);
-      line-height:2.1;letter-spacing:.5px;
-      margin:24px 0 36px;text-align:left;
-    }
 
     /* 底部 */
     footer{padding:60px 36px 100px;text-align:center;background:var(--bg)}
     footer .bow{width:60px;height:36px;margin-bottom:20px}
-    footer .verse-final{
-      font-family:'Cormorant Garamond',serif;
-      font-style:italic;font-weight:300;
-      font-size:11px;color:var(--muted);
-      line-height:2.1;letter-spacing:.5px;
-      margin:20px 0;
-    }
-    footer .signature{
-      font-family:'Cormorant Garamond',serif;
-      font-style:italic;font-weight:300;
-      font-size:13px;color:var(--gold-deep);
-      letter-spacing:2px;margin-top:20px;
-    }
-
-    /* 弹窗 */
-    .modal{
-      position:fixed;inset:0;background:rgba(0,0,0,.5);
-      display:none;align-items:center;justify-content:center;
-      z-index:200;padding:24px;
-    }
-    .modal.show{display:flex;animation:fade-in .3s ease}
-    .modal .card{
-      background:#fff;padding:36px 32px;border-radius:8px;
-      max-width:340px;width:100%;text-align:center;
-      box-shadow:0 20px 60px rgba(0,0,0,.2);
-    }
-    .modal h3{font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--gold-deep);font-size:24px;margin-bottom:14px;letter-spacing:2px}
-    .modal p{color:var(--ink);font-size:14px;line-height:1.8}
-    .modal .small{margin-top:14px;font-size:12px;color:var(--muted)}
-    .map-options{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-    .map-opt{
-      display:block;width:100%;padding:13px 16px;
-      border:1px solid var(--line);border-radius:8px;
-      color:var(--ink);font-size:15px;text-decoration:none;text-align:center;
-      transition:all .2s;
-    }
-    .map-opt:hover{border-color:var(--gold);color:var(--gold-deep)}
-    .map-cancel{
-      margin-top:16px;width:100%;padding:11px 16px;border-radius:8px;
-      color:var(--muted);font-size:14px;background:#F5F3EF;
-    }
 
     /* 滚动淡入 */
     .fade-up{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
@@ -462,8 +349,7 @@
     .hero img,
     .photo-frame img,
     .calendar-section .photo-bg,
-    .gal-item img,
-    .single-img img{
+    .gal-item img{
       -webkit-touch-callout:none !important;
       -webkit-user-select:none !important;
       -khtml-user-select:none !important;
@@ -615,9 +501,11 @@
     <p class="tips-line">如果你身在不同城市或因繁忙工作</p>
     <p class="tips-line">无法到达仪式现场</p>
     <p class="tips-line">没有关系我们已经收到你的祝福</p>
+    <p class="tips-line">婚礼期间我们可能比较忙碌</p>
     <p class="tips-line">如有照顾不周</p>
-    <p class="tips-line">祝万事如意 婚礼期间我们可能比较忙碌</p>
-    <p class="tips-line">还请大家多多包涵照顾好自己呦~</p>
+    <p class="tips-line">还请大家多多包涵</p>
+    <p class="tips-line">照顾好自己呦~</p>
+    <p class="tips-line">祝万事如意</p>
     <svg class="bow" viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg">
       <g fill="#C9A876" stroke="#A8865A" stroke-width="0.5">
         <path d="M100 55 C 70 28 25 35 22 50 C 25 68 70 78 100 55 Z"/>
@@ -650,7 +538,7 @@
     </svg>
     <p class="tips-line">每一束星光，都是我们爱情的见证</p>
     <p class="tips-line">每次心动，都藏着对未来的期许</p>
-    <p class="tips-line">盼你蓓临</p>
+    <p class="tips-line">盼你莅临</p>
     <p class="tips-line">与我们一同沉浸在</p>
     <p class="tips-line">这场星光与爱意交织的浪漫里</p>
   </footer>
@@ -665,7 +553,15 @@
 
     // ===== 立体彩带蝴蝶结替换所有 .bow =====
     (function(){
-      const BOW = '<svg class="bow" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rib" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0D69C"/><stop offset="0.5" stop-color="#C9A876"/><stop offset="1" stop-color="#8A6A3A"/></linearGradient></defs><g stroke="#8A6A3A" stroke-width="0.6" stroke-linejoin="round"><path d="M120 60 C 88 28 28 32 20 55 C 24 80 90 82 120 60 Z" fill="url(#rib)"/><path d="M120 60 C 152 28 212 32 220 55 C 216 80 150 82 120 60 Z" fill="url(#rib)"/><path d="M106 72 C 86 96 60 122 30 132 Q 56 124 78 110 Q 96 94 104 76 Z" fill="url(#rib)"/><path d="M134 72 C 154 96 180 122 210 132 Q 184 124 162 110 Q 144 94 136 76 Z" fill="url(#rib)"/><ellipse cx="120" cy="62" rx="14" ry="11" fill="url(#rib)"/></g><g fill="#A8865A"><path d="M30 132 L 50 122 L 44 134 L 30 138 Z"/><path d="M210 132 L 190 122 L 196 134 L 210 138 Z"/></g><g fill="#6A4A1A" opacity="0.3"><path d="M120 60 C 95 50 65 55 55 62 C 75 70 100 70 120 60 Z"/><path d="M120 60 C 145 50 175 55 185 62 C 165 70 140 70 120 60 Z"/></g><g stroke="#F8E8C8" stroke-width="1.8" fill="none" opacity="0.7"><path d="M120 60 Q 95 42 78 50"/><path d="M120 60 Q 145 42 162 50"/></g><ellipse cx="116" cy="58" rx="6" ry="3" fill="#F5E0B8" opacity="0.7"/></svg>';
+      // 渐变只定义一次：否则 6 个蝴蝶结会生成 6 个重复的 id="rib"
+      if (!document.getElementById('ribDefs')) {
+        document.body.insertAdjacentHTML('afterbegin',
+          '<svg id="ribDefs" width="0" height="0" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">' +
+          '<defs><linearGradient id="rib" x1="0" y1="0" x2="1" y2="1">' +
+          '<stop offset="0" stop-color="#F0D69C"/><stop offset="0.5" stop-color="#C9A876"/><stop offset="1" stop-color="#8A6A3A"/>' +
+          '</linearGradient></defs></svg>');
+      }
+      const BOW = '<svg class="bow" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg"><g stroke="#8A6A3A" stroke-width="0.6" stroke-linejoin="round"><path d="M120 60 C 88 28 28 32 20 55 C 24 80 90 82 120 60 Z" fill="url(#rib)"/><path d="M120 60 C 152 28 212 32 220 55 C 216 80 150 82 120 60 Z" fill="url(#rib)"/><path d="M106 72 C 86 96 60 122 30 132 Q 56 124 78 110 Q 96 94 104 76 Z" fill="url(#rib)"/><path d="M134 72 C 154 96 180 122 210 132 Q 184 124 162 110 Q 144 94 136 76 Z" fill="url(#rib)"/><ellipse cx="120" cy="62" rx="14" ry="11" fill="url(#rib)"/></g><g fill="#A8865A"><path d="M30 132 L 50 122 L 44 134 L 30 138 Z"/><path d="M210 132 L 190 122 L 196 134 L 210 138 Z"/></g><g fill="#6A4A1A" opacity="0.3"><path d="M120 60 C 95 50 65 55 55 62 C 75 70 100 70 120 60 Z"/><path d="M120 60 C 145 50 175 55 185 62 C 165 70 140 70 120 60 Z"/></g><g stroke="#F8E8C8" stroke-width="1.8" fill="none" opacity="0.7"><path d="M120 60 Q 95 42 78 50"/><path d="M120 60 Q 145 42 162 50"/></g><ellipse cx="116" cy="58" rx="6" ry="3" fill="#F5E0B8" opacity="0.7"/></svg>';
       document.querySelectorAll('svg.bow').forEach(el => { el.outerHTML = BOW; });
     })();
 
